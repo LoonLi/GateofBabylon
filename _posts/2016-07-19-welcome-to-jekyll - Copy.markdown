@@ -31,10 +31,6 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 # test
 
 
-## test
-
-
-> test
 
 [jekyll-docs]: http://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
