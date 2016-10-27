@@ -15,4 +15,6 @@ twitter_username: Loon
 github_username:  Loon
 
 # Build settings
-markdown: kramdown
+markdown: kramdowm
+kramdown:
+  input: GFM
