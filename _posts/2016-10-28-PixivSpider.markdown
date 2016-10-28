@@ -23,7 +23,7 @@ categories: jekyll update
 	
 # 0x02 爬虫编写
 
-首先是爬虫类的初始化，唯一的参数是需要搜索的tag。在这里构建了一个初始url，之后的参数都将在这个网址的基础上增加。对Pixiv搜索post参数有兴趣的朋友可以自己去实验一下。
+现在我们可以开始编写爬虫代码了。首先是爬虫类的初始化，唯一的参数是需要搜索的tag。在这里构建了一个初始url，之后的参数都将在这个网址的基础上增加。对Pixiv搜索post参数有兴趣的朋友可以自己去实验一下。
 	
 {% highlight ruby %}
 class Spider:
@@ -33,7 +33,7 @@ class Spider:
 		self.url = origin_url+urllib2.quote(tag,"!")
 {% endhighlight %}
 	
-现在我们可以开始编写爬虫代码了。不妨先写一个初始化request信息，并链接网页的函数。
+不妨先写一个初始化request信息，并链接网页的函数。
 
 {% highlight ruby %}
 	def makeRequest(self,url):
