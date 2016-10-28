@@ -16,5 +16,4 @@ github_username:  Loon
 
 # Build settings
 markdown: kramdowm
-kramdown:
-  input: GFM
+
