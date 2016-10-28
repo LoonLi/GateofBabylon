@@ -9,17 +9,17 @@ categories: jekyll update
 
 # 0x00 环境准备
 
-我使用的是'python2.7'，主要利用了'urllib2'包里的*Request()*跟*urlopen()*来访问网页。分析网页则使用'BeautifulSoup'包。
+我使用的是`python2.7`，主要利用了`urllib2`包里的*Request()*跟*urlopen()*来访问网页。分析网页则使用`BeautifulSoup`包。
 
 # 0x01 筛选网页信息
 
 我们就以关键词**Fate**作为示例吧。首先上P站搜索Fate。观察网页源代码，查看图片的分类：
 	
-![example1](http://ofnd3snod.bkt.clouddn.com/pixiv-spider-01.png)
+![example1](http://ofnd3snod.bkt.clouddn.com/blog/pixiv-spider-01.png)
 	
-可以看到，每个图片都是一个表格项目，然后'class=\'image-item\''。再分析的话，可以知道收藏数是一个a标签，'class=\'bookmark-count _ui-tooltip\''。这些都对我们分析网页非常有帮助。
+可以看到，每个图片都是一个表格项目，然后`class='image-item'`。再分析的话，可以知道收藏数是一个a标签，`class='bookmark-count _ui-tooltip'`。这些都对我们分析网页非常有帮助。
 	
-我们再观察一下这个网页的url：'http://www.pixiv.net/search.php?s_mode=s_tag_full&word=Fate'。可以了解到网页是通过*Post*去传递信息的。'word'对应的应该就是关键词了。此处再说明一下，如果使用的不是英文单词，而是日文的话会被url编码。此时使用'urllib2'包中的'quote'方法去把其编码成url编码即可，需要注意的一点是pixiv的url编码过滤了!？等标点符号，将这些标点放在quote()的第二个参数上即可实现过滤。再来看看这个网页'http://www.pixiv.net/search.php?word=Fate&s_mode=s_tag_full&order=date_d&p=2',可以注意到有个参数'p'，显然是用来控制页数的，我们可以利用这个参数来翻页。
+我们再观察一下这个网页的url：`http://www.pixiv.net/search.php?s_mode=s_tag_full&word=Fate`。可以了解到网页是通过*Post*去传递信息的。`word`对应的应该就是关键词了。此处再说明一下，如果使用的不是英文单词，而是日文的话会被url编码。此时使用`urllib2`包中的`quote`方法去把其编码成url编码即可，需要注意的一点是pixiv的url编码过滤了!？等标点符号，将这些标点放在quote()的第二个参数上即可实现过滤。再来看看这个网页`http://www.pixiv.net/search.php?word=Fate&s_mode=s_tag_full&order=date_d&p=2`,可以注意到有个参数`p`，显然是用来控制页数的，我们可以利用这个参数来翻页。
 	
 # 0x02 爬虫编写
 
@@ -84,7 +84,7 @@ class Spider:
 		return scores_board
 {% endhighlight %}
 
-上面的代码中用到了'BeautifulSoup'中的css选择器，利用标签的类来定位信息，具体利用的方法可以查询[BeautifulSoup的官方文档]()。这里设定了一个页数记录变量'page_count'，控制了爬取的页数。另外一个停止爬取的条件是该页面的图片项目数量小于10个，也就相当于爬到最后了。（当然不是10个也可以）最后把爬取到的信息以字典的形式存储在变量'scores_board'中，其中key为图片项目对应的url，value为对应的收藏数。最后就是排序返回运行结果了。
+上面的代码中用到了`BeautifulSoup`中的css选择器，利用标签的类来定位信息，具体利用的方法可以查询[BeautifulSoup的官方文档](http://beautifulsoup.readthedocs.io/zh_CN/latest/)。这里设定了一个页数记录变量`page_count`，控制了爬取的页数。另外一个停止爬取的条件是该页面的图片项目数量小于10个，也就相当于爬到最后了。（当然不是10个也可以）最后把爬取到的信息以字典的形式存储在变量'scores_board'中，其中key为图片项目对应的url，value为对应的收藏数。最后就是排序返回运行结果了。
 
 # 0x03 运行结果
 
