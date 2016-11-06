@@ -29,22 +29,34 @@ published: true
 ![窗口](http://ofnd3snod.bkt.clouddn.com/blog/od.png)
 
 -l     log data 记录Log信息
+
 -e     Executable modules 记录导入的模块，如动态链接库
+
 -m     Memory map 记录内存中文件信息
+
 -t     Threads 记录线程
+
 -w     windows 记录窗口信息
+
 -h     handle 记录句柄
+
 -c     主窗口
+
 -p     Pathces 记录补丁信息
+
 -k     记录调用堆栈
+
 -b     Breakpoints 记录断点信息
+
 -r     References 记录参考信息
+
 -...     Run trace 记录跟踪信息
+
 -s     Source 记录资源信息
 
 ## 0x02 主窗口介绍
 
-![主窗口](http://ofnd3snod.bkt.clouddn.com/blog/od-main.png)
+![主窗口](http://ofnd3snod.bkt.clouddn.com/blog/od-main.jpg)
 
 ## 0x03 断点总结
 
