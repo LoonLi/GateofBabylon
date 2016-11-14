@@ -14,13 +14,13 @@ git是一款非常强大的版本管理工具，拥有大量的功能。如果�
 
 `.git`中记录了三部分的信息，分别是**工作区**，**暂存区**，**分支树**。`git`命令的操作也将基于这三个区域。**工作区**指的是实际磁盘上的空间，现在在工作区新建一个文件。
 
-{% highlight ruby %}
+``` bash
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# echo "aasdf" > test1
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# ls
 test1
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# cat test1
 aasdf
-{% endhighlight %}
+```
 
 使用`git status`命令可以看到当前项目的状态。另外`git status`命令可以加上-s参数查看简洁想信息。
 
@@ -144,9 +144,12 @@ Date:   Fri Nov 11 20:11:49 2016 +0800
 
 这里对图片稍作解释。其中*1*指向的是*HEAD*，即指向commit的指针（这种说法不太准确，不过此处可以这样理解），*2*指向的是暂存区，*3*指向的是工作区。另外，可以从图中看出来commit数据是一个链表结构，新的commit指向旧的commit。
 
+
 `git reset`有两种用法，这里只介绍常用的那种。`git reset [--soft | --mixed | --hard | --merge | --keep] [-q] [<commit>]`。其中<commit>是commit的id，即前面说到的SHA1值，但输入的时候只要输前几位就可以了。使用`--hard`参数的话会改变*1*，*2*，*3*全部的内容，即工作区和暂存区的内容都会被对应commit的数据覆盖。使用`--mixed`参数会改变*1*，*2*。使用`--soft`的话只改变*1*。该命令的缺省值是`--mixed HEAD`.
 
+
 `git checkout`有三种用法，另外两种涉及到分支，故暂且不提。此处用到的是`git checkout [-q] [<commit>] [--] <paths> ...`。此种checkout操作不会改编*HEAD*指针，而是会使用暂存区的文件覆盖工作区的文件。接下来看看例子吧，让我们回到最初的版本。
+
 
 根据上面提到的指令，还原似乎是有两种方案的。一是使用`git reset --hard <commit>`。另一种是先使用`git reset <commit>`，然后`git checkout -- *`。可实际上第二种是不行的，因为标记为*"Fist commit"*的commit的*.git*中并没有记录*test2*与*tset3*,使用`git checkout`会出错。所以只能使用第一种。
 
@@ -198,3 +201,6 @@ root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git checkout -- test1
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# cat test1
 aasdf
 {% endhighlight %}
+
+## 0x04 stash
+
