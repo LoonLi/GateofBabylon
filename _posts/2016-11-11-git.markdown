@@ -204,3 +204,24 @@ aasdf
 
 ## 0x04 stash
 
+当工作时到一半时，发现以前写的程序有bug怎么办呢？这个时候就可以用到`git stash`命令。使用该命令后，程序会回到HEAD指向的状态，工作区和暂存区的数据都将被保存。使用`git stash list`可以看到所有保存的状态。使用`git stash pop`命令，可以回到最新保存的状态，并且删除list中该条数据。使用`git stash apply`的话能回到保存状态，并且不删除list中数据。
+
+``` bash
+root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# ls
+test1  test2
+root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git stash
+Saved working directory and index state WIP on master: 7c1f345 Fist commit
+HEAD is now at 7c1f345 Fist commit
+root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# ls
+test1
+root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git stash list
+stash@{0}: WIP on master: 7c1f345 Fist commit
+root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git stash pop
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   test2
+
+Dropped refs/stash@{0} (fb72bde90cd1ace9c5db81740401a6f94c5b4fca)
+```
