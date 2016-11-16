@@ -24,7 +24,7 @@ aasdf
 
 使用`git status`命令可以看到当前项目的状态。另外`git status`命令可以加上-s参数查看简洁想信息。
 
-{% highlight ruby %}
+``` bash
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git status
 On branch master
 
@@ -36,11 +36,11 @@ Untracked files:
         test1
 
 nothing added to commit but untracked files present (use "git add" to track)
-{% endhighlight %}
+```
 
 根据提示，git提示我们使用add命令将test1文件添加到追踪文件。此处因为`.git`中没有关于test1文件的记录，所以test1是无法被识别的。所以我们使用`git add`在把test1增加到**暂存区**的同时，让`.git`记录下这个文件。
 
-{% highlight ruby %}
+``` bash
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git add test1
 {% endhighlight %}
 
@@ -49,13 +49,13 @@ root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git add test1
 {% highlight ruby %}
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git ls-files
 test1
-{% endhighlight %}
+```
 
 ## 0x02 commit
 
 现在可以使用`git commit`命令将我们的文件提交到版本库了。使用commit命令后，暂存区的数据会被提交到版本库，而不是工作区的数据，这个要区分清楚。记住要使用`-m`参数添加备注。如果是第一次提交，git会提示你输入你的邮箱和姓名，跟着指示做就可以了。
 
-{% highlight ruby %}
+``` bash
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git commit -m "Fist commit"
 [master (root-commit) 7c1f345] Fist commit
  1 file changed, 1 insertion(+)
@@ -71,7 +71,7 @@ Author: Loon <l470279614@yahoo.com>
 Date:   Fri Nov 11 20:11:49 2016 +0800
 
     Fist commit
-{% endhighlight %}
+```
 
 可以看到commit后面跟着一个长字符串，其实那个该commit对应的SHA1值，可以作为此commit的ID，方便其他命令操作。此时相当于完成了一次版本的提交。
 
@@ -79,7 +79,7 @@ Date:   Fri Nov 11 20:11:49 2016 +0800
 
 如果我想提交了几个版本后想回到前面的版本该怎么办呢？让我们先做如下的操作。
 
-{% highlight ruby %}
+``` bash
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# echo "123456" > test2
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# echo "123456" >> test1
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git add test1 test2
@@ -113,11 +113,11 @@ root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git commit -m "Thrid commit"
 [master 1a10f65] Thrid commit
  1 file changed, 1 insertion(+)
  create mode 100644 test3
-{% endhighlight %}
+```
 
 使用`git log`命令查看提交记录。
 
-{% highlight ruby %}
+``` bash
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git log
 commit 1a10f65be09ecca3df5b594f3b31c6810821f05c
 Author: Loon <l470279614@yahoo.com>
@@ -136,7 +136,7 @@ Author: Loon <l470279614@yahoo.com>
 Date:   Fri Nov 11 20:11:49 2016 +0800
 
     Fist commit
-{% endhighlight %}
+```
 
 这时就可以用到`git reset`与`git chekcout`指令了。前面说过`.git`中记录了三部分的内容，`git reset`与`git checkout`这三部分之间的指针改变与内容覆盖的命令。这里引用[Gti权威指南]中的一幅图。
 
@@ -153,7 +153,7 @@ Date:   Fri Nov 11 20:11:49 2016 +0800
 
 根据上面提到的指令，还原似乎是有两种方案的。一是使用`git reset --hard <commit>`。另一种是先使用`git reset <commit>`，然后`git checkout -- *`。可实际上第二种是不行的，因为标记为*"Fist commit"*的commit的*.git*中并没有记录*test2*与*tset3*,使用`git checkout`会出错。所以只能使用第一种。
 
-{% highlight ruby %}
+``` bash
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# ls
 test1  test2  test3
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git log
@@ -184,7 +184,7 @@ Author: Loon <l470279614@yahoo.com>
 Date:   Fri Nov 11 20:11:49 2016 +0800
 
     Fist commit
-{% endhighlight %}
+```
 
 	如果又想回到第三个版本呢？使用git reflog指令吧，里面有你的操作记录，在里面能找到第三个commit的ID。
 
