@@ -42,11 +42,11 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 ``` bash
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git add test1
-{% endhighlight %}
+```
 
 此时test1文件已经在暂存区中了，可以使用`git ls-files`查看暂存区的文件。
 
-{% highlight ruby %}
+``` bash
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git ls-files
 test1
 ```
@@ -60,11 +60,11 @@ root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git commit -m "Fist commit"
 [master (root-commit) 7c1f345] Fist commit
  1 file changed, 1 insertion(+)
  create mode 100644 test1
- {% endhighlight %}
+```
 
  使用`git log`可以看到提交信息。
 
-{% highlight ruby %}
+``` bash
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git log
 commit 7c1f345361b6eedb6448fa81e8baf9f27c0c0bfa
 Author: Loon <l470279614@yahoo.com>
@@ -190,7 +190,7 @@ Date:   Fri Nov 11 20:11:49 2016 +0800
 
 另外再实践一下`git checkout`的操作。
 
-{% highlight ruby %}
+``` bash
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# cat test1
 aasdf
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# echo "123456" >> test1
@@ -200,7 +200,7 @@ aasdf
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# git checkout -- test1
 root@DESKTOP-I943ECH:/mnt/e/test/GitPrac# cat test1
 aasdf
-{% endhighlight %}
+```
 
 ## 0x04 stash
 
