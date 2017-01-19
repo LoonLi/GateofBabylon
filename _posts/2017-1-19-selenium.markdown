@@ -25,29 +25,47 @@ driver.get(url)
 driver本身提供了元素定位的方法。
 
 单个元素选取
+
 ```
 find_element_by_id
+
 find_element_by_name
+
 find_element_by_xpath
+
 find_element_by_link_text
+
 find_element_by_partial_link_text
+
 find_element_by_tag_name
+
 find_element_by_class_name
+
 find_element_by_css_selector
+
 ```
 
 多个元素选取
+
 ```
 find_elements_by_name
+
 find_elements_by_xpath
+
 find_elements_by_link_text
+
 find_elements_by_partial_link_text
+
 find_elements_by_tag_name
+
 find_elements_by_class_name
+
 find_elements_by_css_selector
+
 ```
 
 另外还可以利用 By 类来确定哪种选择方式
+
 ```
 from selenium.webdriver.common.by import By
 
@@ -56,6 +74,7 @@ driver.find_elements(By.XPATH, '//button')
 ```
 
 By 类的一些属性如下
+
 ```
 ID = "id"
 XPATH = "xpath"
@@ -71,6 +90,7 @@ CSS_SELECTOR = "css selector"
 
 ## 元素操作
 选取了元素后就可以对元素进行操作了，例如：
+
 ``` python
 driver.find_element_by_id('companyDetail').click()
 ```
@@ -83,6 +103,7 @@ driver.find_element_by_id('companyDetail').click()
 
 ### 隐式等待
 在访问页面后，都会固定等待一个时间，除非网页已经加载好，然后再进行操作，否则抛出异常。
+
 ``` python
 # -*- coding: utf-8 -*-
 from selenium import webdriver
@@ -97,6 +118,7 @@ driver.quit()
 
 ### 显示等待
 这种方法更加灵活，可以指定一个页面元素进行等待，直到该元素被加载成功。
+
 ``` python
 # -*- coding: utf-8 -*-
 from selenium import webdriver
