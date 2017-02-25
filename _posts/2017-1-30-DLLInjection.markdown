@@ -27,7 +27,7 @@ DLL注入是指向运行中的程序强制插入特定的DLL文件。DLL被加�
 
 原理就是利用CreateRemoteThread()API在目标进程中执行LoadLibrary()加载目标DLL。  代码如下：
 
-``` C
+```c
 #include "windows.h"
 #include "tchar.h"
 
