@@ -15,6 +15,6 @@ twitter_username: Loon
 github_username:  Loon
 
 # Build settings
-pygments: true
-markdown: redcarpet
+
+markdown: kramdown
 
