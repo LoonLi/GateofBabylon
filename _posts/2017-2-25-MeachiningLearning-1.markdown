@@ -2,7 +2,7 @@
 layout: post
 title:  "python机器学习笔记（1）—— k邻近算法"
 date:   2017-02-25 11:49:45 +0200
-categories: reverse
+categories: meachinelearning
 published: true
 ---
 ### 0x00 什么是k邻近算法？

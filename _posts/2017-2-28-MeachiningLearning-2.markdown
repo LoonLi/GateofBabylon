@@ -2,7 +2,7 @@
 layout: post
 title:  "python机器学习笔记（2）—— ID3决策树"
 date:   2017-02-28 11:49:45 +0200
-categories: reverse
+categories: meachinelearning
 published: true
 ---
 ### 0x00 什么是ID3？
