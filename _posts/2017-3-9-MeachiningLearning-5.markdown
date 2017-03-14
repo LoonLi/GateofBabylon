@@ -19,17 +19,35 @@ SVM即Support Vector Machine，支持向量机，在一般情况下是一个二�
 
 <br/>
 
+<br/>
+
 现在我们考虑一个问题，如何让所有点中，离这个分分割面的距离最近的点，里这个分割面最远。这个句话听起来有点绕，但它就是这个意思。也就是说，我们考虑这样的情况：
 
 ![f4](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f4.gif)
 
+<br/>
+
+<br/>
+
 对于这种情况求解是非常困难的，所以我们采用一种变换方式，将它变成我们易于求解形式。首先我们假设所有支持向量（即离分割超平面最近的点）到分割超平面的距离为1，那么所有非支持向量到分割超平面的距离就大于1。然后我们考虑到![f5](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f5.gif)等价于求解![f6](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f6.gif)。那么，我们可以得到这样的式子：
+
+<br/>
+
+<br/>
 
 ![f7](http://ofnd3snod.bkt.clouddn.com/f7.png)
 
 ![f8](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f8.png)
 
+<br/>
+
+<br/>
+
 其中s.t.表示限制条件。然后就可以利用拉格朗日对偶法求最大值，具体推导公式就不在这里细写，直接列出其中推导出有用的公式和需要求解的公式:
+
+<br/>
+
+<br/>
 
 ![f9](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f9.png)
 
@@ -37,57 +55,157 @@ SVM即Support Vector Machine，支持向量机，在一般情况下是一个二�
 
 ![f11](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f11.png)
 
+<br/>
+
+<br/>
+
 其中上面那个求最大值的就是我们需要求得目标函数，通过这个函数我们求得阿尔法，从而求出w和b，得到了最后的结果。这里最后加上b的求法。思想是在超平面上方和下方的支持向量到超平面的距离一致。
 
+<br/>
+
+<br/>
+
 ![f12](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f12.png)
+
+<br/>
+
+<br/>
 
 ### 0x02 SMO高效算法
 
 回到上面用拉格朗日对偶推导出来的公式：
 
+<br/>
+
+<br/>
+
 ![f9](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f9.png)
+
+<br/>
+
+<br/>
 
 我们可以发现，如果我们一次迭代中只改变一个阿尔法的值，那么上面的等式会不满足约束条件，那么我们考虑一次同时改变两个阿尔法的值，保证它们的和为一个常数.同时我们为了允许存在少数分类错误的点存在空间中，增加一个松弛变量C，使阿尔法小于C。那么，我们可以推算出他们的范围：
 
+<br/>
+
+<br/>
+
 当它们异号时
+
+<br/>
+
+<br/>
 
 ![f13](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f13.png)
 
+<br/>
+
+<br/>
+
 当它们同号时
+
+<br/>
+
+<br/>
 
 ![f14](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f14.png)
 
+<br/>
+
+<br/>
+
 然后我们设一条公式
+
+<br/>
+
+<br/>
 
 ![f15](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f15.png)
 
+<br/>
+
+<br/>
+
 结合这条公式，并且将a1用a2来表示带入求最大值的式子中，可以推导出这样的一条公式
+
+<br/>
+
+<br/>
 
 ![f16](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f16.png)
 
+<br/>
+
+<br/>
+
 其中![f17](http://ofnd3snod.bkt.clouddn.com/f17.png)。特殊情况下eta可能不为正，处理起来非常麻烦。不过一般不会出现，这里不做讨论。
+
+<br/>
+
+<br/>
 
 那么b应该怎么求呢。
 
+<br/>
+
+<br/>
+
 ![f18](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f18.jpg)
+
+<br/>
+
+<br/>
 
 其中界内指的就是在0与C之间。
 
+<br/>
+
+<br/>
+
 上述内容参考[支持向量机（五）SMO算法](http://www.cnblogs.com/jerrylead/archive/2011/03/18/1988419.html).
+
+<br/>
+
+<br/>
 
 ### 0x03 核函数
 
 大部分的数据往往是线性不可分的，这种时候就需要使用核函数将数据从低维度映射到高维度。比如对于
 
+<br/>
+
+<br/>
+
 ![f19](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f19.png)
+
+<br/>
+
+<br/>
 
 我们可以通过做乘积的方式增加它的维度
 
+<br/>
+
+<br/>
+
 ![f20](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f20.png)
+
+<br/>
+
+<br/>
 
 比如上面的例子，数据就从二维变成了五维。
 
+<br/>
+
+<br/>
+
 常用的核函数是这个，高斯核函数
+
+<br/>
+
+<br/>
 
 ![f21](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f21.png)
 
