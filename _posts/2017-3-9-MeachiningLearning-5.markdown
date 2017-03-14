@@ -17,7 +17,7 @@ SVM即Support Vector Machine，支持向量机，在一般情况下是一个二�
 
 首先我们回想到Logistic回归，同样是对两类数据进行分类，在图中画出两类数据的分界线。我们设分界的超平面（现在是直线）的公式为![f1](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f1.gif)，我们很容易得到某个点到直线距离的函数间隔![f2](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f2.gif)，几何间隔![f3](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/SVM/f3.gif)。
 
-</br>
+<br/>
 
 现在我们考虑一个问题，如何让所有点中，离这个分分割面的距离最近的点，里这个分割面最远。这个句话听起来有点绕，但它就是这个意思。也就是说，我们考虑这样的情况：
 
