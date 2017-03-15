@@ -214,6 +214,19 @@ SVM即Support Vector Machine，支持向量机，在一般情况下是一个二�
 结合上面这些公式看代码就相对好懂了。
 
 ```python
+def kernelTrans(X, A, kTup): #calc the kernel or transform data to a higher dimensional space
+    m,n = shape(X)
+    K = mat(zeros((m,1)))
+    if kTup[0]=='lin': K = X * A.T   #linear kernel
+    elif kTup[0]=='rbf':
+        for j in range(m):
+            deltaRow = X[j,:] - A
+            K[j] = deltaRow*deltaRow.T
+        K = exp(K/(-1*kTup[1]**2)) #divide in NumPy is element-wise not matrix like Matlab
+    else: raise NameError('Houston We Have a Problem -- \
+    That Kernel is not recognized')
+    return K
+
 class optStruct:
     def __init__(self,dataMatIn, classLabels, C, toler, kTup):  # Initialize the structure with the parameters 
         self.X = dataMatIn
