@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "python机器学习笔记（5）—— AdaBoost"
+title:  "python机器学习笔记（6）—— AdaBoost"
 date:   2017-03-14 11:49:45 +0200
 categories: meachinelearning
 published: true
