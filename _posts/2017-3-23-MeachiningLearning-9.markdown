@@ -78,7 +78,7 @@ def kMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
 
 <br/>
 
-![p0](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/K-means/p1.png)
+![p0](http://ofnd3snod.bkt.clouddn.com/blog/meachineleaning/K-means/p0.png)
 
 <br/>
 
