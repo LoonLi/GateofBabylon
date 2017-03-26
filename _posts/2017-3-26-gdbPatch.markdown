@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "gdb修改寄存器"
-date:   2017-03-20 11:49:45 +0200
+date:   2017-03-26 11:49:45 +0200
 categories: ctf
 published: true
 ---
